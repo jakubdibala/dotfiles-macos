@@ -1,0 +1,46 @@
+[
+
+	// Toggle comments
+	// =============================
+	// - cmd+shift+/ - toggle comment on line
+	{
+		"keys": ["super+shift+["],
+		"command": "toggle_comment",
+		"args": {
+			"block": false
+		}
+	},
+
+	// Line Jumper:
+	// =============================
+	// - ctrl+d - jump down 10 lines
+	// - ctrl+u - jump up 10 lines
+	{
+		"keys": ["ctrl+d"],
+		"command": "line_jumper",
+		"args": {
+			"number_of_lines": 10,
+			"cmd": "down"
+		}
+	},
+	{
+		"keys": ["ctrl+u"],
+		"command": "line_jumper",
+		"args": {
+			"number_of_lines": 10,
+			"cmd": "up"
+		}
+	},
+    {
+        "keys": ["super+shift+r"],
+        "command": "fmt_now",
+    },
+    {
+        "keys": ["super+shift+u"],
+        "command": "find_use",
+    },
+    {
+        "keys": ["super+shift+g"],
+        "command": "goto_definition",
+    }
+]
