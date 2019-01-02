@@ -34,6 +34,17 @@
     {
         "keys": ["super+shift+r"],
         "command": "fmt_now",
+        "context":  [{"key": "selector", "operator": "equal", "operand": "source.php"}]
+    },
+    {
+        "keys": ["super+shift+r"],
+        "command": "js_prettier",
+        "context":  [{"key": "selector", "operator": "equal", "operand": "source.js"}]
+    },
+    {
+        "keys": ["super+shift+r"],
+        "command": "js_prettier",
+        "context":  [{"key": "selector", "operator": "equal", "operand": "source.scss"}]
     },
     {
         "keys": ["super+shift+u"],
