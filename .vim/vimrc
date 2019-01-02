@@ -1,0 +1,78 @@
+" .vimrc
+" Author: Jakub Dibala <dibalaj@dibalaj.cz>
+" Source: ...
+
+set nocompatible
+filetype off
+call plug#begin('~/.vim/plugged')
+
+" Plugins {{{
+
+Plug 'wincent/command-t', {
+    \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+    \ }
+
+Plug 'https://github.com/trapd00r/neverland-vim-theme'
+
+call plug#end()
+" }}}
+
+" Basic options
+filetype plugin indent on
+syntax on
+colorscheme neverland
+set encoding=utf-8
+"set modelines=0
+set autoindent
+"set showmode
+"set showcmd
+set ttyfast
+set backspace=indent,eol,start
+set number
+set norelativenumber
+"set lazyredraw
+set splitbelow
+set splitright
+"set ttimeout
+"set notimeout
+set autowrite
+set shiftround
+set title
+set linebreak
+set cursorline
+set noswapfile
+
+let mapleader="\<Space>"
+
+" Folding {{{
+
+
+
+" }}}
+
+" Command-T settings ------------------------------------------- {{{
+
+let g:CommandTAcceptSelectionMap = '<C-t>'
+let g:CommandTAcceptSelectionTabMap = '<CR>'
+
+" }}}
+
+" Searching ---------------------------------------------------- {{{
+
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+set gdefault
+
+set scrolloff=3
+set sidescroll=1
+set sidescrolloff=10
+"set virtualedit+=block
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <leader>n :nohlsearch<CR>
+
+" }}}
