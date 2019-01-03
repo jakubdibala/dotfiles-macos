@@ -8,11 +8,12 @@ set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
 
-Plug 'wincent/command-t', {
-    \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-    \ }
-
+Plug 'wincent/command-t', {'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'}
 Plug 'https://github.com/trapd00r/neverland-vim-theme'
+Plug 'StanAngeloff/php.vim'
+Plug 'kmszk/skyhawk'
+Plug 'jwalton512/vim-blade'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 " }}}
@@ -24,25 +25,27 @@ set encoding=utf-8
 let mapleader="\<Space>"                        " leader mapping
 set modelines=1                                 " allow to configure vim by modeline
 set noswapfile                                  " do not use swap files
-"set ttyfast
+set nottyfast
 
 " }}}
 
 " Tabs & spaces {{{
 
-set tabstop=4           " when vim read <TAB> char, how many spaces it is?
-set softtabstop=4       " when insert <TAB> key, how many spaces it is?
+set tabstop=8           " when vim read <TAB> char, how many spaces it is?
+set softtabstop=0       " when insert <TAB> key, how many spaces it is?
 set expandtab           " convert <TAB> to spaces
 set autoindent          " auto indent on new line
 set smartindent         " smarter auto indenting
 set shiftround
+set shiftwidth=4 
+set smarttab
 
 " }}}
 
 " UI config {{{
 
 syntax on               " enable syntax highlight
-colorscheme neverland   " colorscheme
+colorscheme skyhawk   " colorscheme
 set number              " show line numbers
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
@@ -53,6 +56,7 @@ set showmatch           " highlight matching [{()}]
 set splitbelow          " split to bottom
 set splitright          " split to right
 set backspace=indent,eol,start
+set fillchars+=vert:│   " split bar style
 
 
 " }}}
@@ -137,6 +141,12 @@ set sidescrolloff=10
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap <leader>n :nohlsearch<CR>
+
+" }}}
+
+" Emmet settings {{{
+
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " }}}
 

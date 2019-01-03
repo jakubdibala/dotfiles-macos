@@ -1,6 +1,6 @@
 # $PATH variable
 export PATH="/usr/local/sbin:$PATH"
-source ~/.bash/paths
+#source ~/.bash/paths
 
 # aliases
 alias g='git'
@@ -11,6 +11,7 @@ alias code='cd ~/code'
 alias ll='ls -la'
 alias skoda='cd ~/code/skoda-d-touch-kiosk'
 alias t='tmux'
+alias v='vim .'
 
 # Bash prompt setup
 source ~/.git-prompt.sh
