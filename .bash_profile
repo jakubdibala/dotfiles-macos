@@ -1,5 +1,6 @@
 # $PATH variable
 export PATH="/usr/local/sbin:$PATH"
+source ~/.bash/paths
 
 # aliases
 alias g='git'
@@ -14,4 +15,3 @@ alias t='tmux'
 # Bash prompt setup
 source ~/.git-prompt.sh
 export PS1="[\A] \u \e[32;1m[\w]\e[0m \$(__git_ps1 '(%s)') \$ "
-

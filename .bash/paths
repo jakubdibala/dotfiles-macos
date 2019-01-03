@@ -1,0 +1,9 @@
+# Composer bin
+export PATH=$PATH:~/.composer/vendor/bin
+
+# PHP (brewed)
+export PATH=$PATH:/usr/local/opt/php@7.1/bin
+export PATH=$PATH:/usr/local/opt/php@7.1/sbin
+
+
+

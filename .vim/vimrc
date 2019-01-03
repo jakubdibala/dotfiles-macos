@@ -2,11 +2,11 @@
 " Author: Jakub Dibala <dibalaj@dibalaj.cz>
 " Source: ...
 
+" Plugins {{{
+
 set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
-
-" Plugins {{{
 
 Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
@@ -17,36 +17,103 @@ Plug 'https://github.com/trapd00r/neverland-vim-theme'
 call plug#end()
 " }}}
 
-" Basic options
-filetype plugin indent on
-syntax on
-colorscheme neverland
-set encoding=utf-8
-"set modelines=0
-set autoindent
-"set showmode
-"set showcmd
-set ttyfast
-set backspace=indent,eol,start
-set number
-set norelativenumber
-"set lazyredraw
-set splitbelow
-set splitright
-"set ttimeout
-"set notimeout
-set autowrite
-set shiftround
-set title
-set linebreak
-set cursorline
-set noswapfile
+" Basic configuration {{{
 
-let mapleader="\<Space>"
+set timeout timeoutlen=200 ttimeoutlen=200     " CMD timeouts
+set encoding=utf-8
+let mapleader="\<Space>"                        " leader mapping
+set modelines=1                                 " allow to configure vim by modeline
+set noswapfile                                  " do not use swap files
+"set ttyfast
+
+" }}}
+
+" Tabs & spaces {{{
+
+set tabstop=4           " when vim read <TAB> char, how many spaces it is?
+set softtabstop=4       " when insert <TAB> key, how many spaces it is?
+set expandtab           " convert <TAB> to spaces
+set autoindent          " auto indent on new line
+set smartindent         " smarter auto indenting
+set shiftround
+
+" }}}
+
+" UI config {{{
+
+syntax on               " enable syntax highlight
+colorscheme neverland   " colorscheme
+set number              " show line numbers
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+filetype plugin indent on      " load filetype-specific indent files
+set wildmenu            " visual autocomplete for command menu
+set lazyredraw          " redraw only when we need to
+set showmatch           " highlight matching [{()}]
+set splitbelow          " split to bottom
+set splitright          " split to right
+set backspace=indent,eol,start
+
+
+" }}}
+
+" Navigation {{{
+
+nnoremap L A
+nnoremap H I
+
+" }}}
+
+" Searching {{{
+
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+set ignorecase
+set smartcase
+set showmatch
+set gdefault
+nnoremap <leader>n :nohlsearch<CR>
+
+" }}}
 
 " Folding {{{
 
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested folds max
+set foldmethod=indent   " folding method
+nnoremap <leader><space> za
 
+" }}}
+
+" Movement {{{
+
+nnoremap j gj
+nnoremap k gk
+nnoremap gV `[v`]
+nnoremap gV `[v`]
+
+" }}}
+
+" Navigation {{{
+
+map <C-h> <C-W>h
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l
+
+" }}}
+
+" Tmux config {{{
+
+" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
 " }}}
 
@@ -59,12 +126,8 @@ let g:CommandTAcceptSelectionTabMap = '<CR>'
 
 " Searching ---------------------------------------------------- {{{
 
-set ignorecase
-set smartcase
-set incsearch
-set showmatch
 set hlsearch
-set gdefault
+set incsearch
 
 set scrolloff=3
 set sidescroll=1
@@ -76,3 +139,5 @@ nnoremap N Nzzzv
 nnoremap <leader>n :nohlsearch<CR>
 
 " }}}
+
+" vim:foldmethod=marker:foldlevel=0
